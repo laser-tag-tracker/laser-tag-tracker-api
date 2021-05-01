@@ -23,7 +23,7 @@ jobs:
         run: dotnet build --no-restore
 
       - name: Build the Docker image
-        run: cd LaserTagTrackerApi && docker build -t ombrelin/lasertagtracker:1.0 . --file Dockerfile
+        run: docker build -t ombrelin/lasertagtracker:1.0 . --file LaserTagTrackerApi/Dockerfile
 
       - name: Docker login
         run: echo '${{ secrets.DOCKER_TOKEN }}' | docker login --username ombrelin --password-stdin
