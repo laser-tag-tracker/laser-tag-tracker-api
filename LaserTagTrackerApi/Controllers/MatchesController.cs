@@ -28,25 +28,27 @@ namespace LaserTagTrackerApi.Controllers
             this.userRepository = userRepository;
         }
 
-        [HttpPost("{userId:guid}")]
-        public async Task<ActionResult<Match>> CreateMatch([FromBody] CreateMatchDto dto, Guid userId)
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult<Match>> CreateMatch([FromBody] CreateMatchDto dto)
         {
             var match = mapper.Map<Match>(dto);
 
-            var user = await userRepository.FindUserByIdWithMatches(userId/*this.CurrentUserId*/);
+            var user = await userRepository.FindUserByIdWithMatches(this.CurrentUserId);
             user.Matches.Add(match);
             await userRepository.UpdateUser(user);
 
             return match;
         }
         
-        [HttpGet("{userId:guid}")]
-        public async Task<ActionResult<List<Match>>> GetMatches(Guid userId)
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult<List<Match>>> GetMatches()
         {
-            var user = await userRepository.FindUserByIdWithMatches(userId/*this.CurrentUserId*/);
+            var user = await userRepository.FindUserByIdWithMatches(this.CurrentUserId);
             return user.Matches;
         }
 
-        //private Guid CurrentUserId => Guid.Parse(User.FindFirst(ClaimTypes.Name)?.Value);
+        private Guid CurrentUserId => Guid.Parse(User.FindFirst(ClaimTypes.Name)?.Value);
     }
 }
