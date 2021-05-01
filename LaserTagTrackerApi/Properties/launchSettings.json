@@ -25,7 +25,8 @@
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DATABASE_URL": "postgres://postgres:arsene10091999@arsenelapostolet.fr:5432/lasertagtracker"
+        "DATABASE_URL": "postgres://postgres:arsene10091999@arsenelapostolet.fr:5432/lasertagtracker",
+        "JWT_SECRET": "A78dVoHoR5TVspYRmh8YGMxXGdK5E7BNP2qhWCpRDTBSEkGgsXKJV2NtVWQJa9ASYb3QDvMXrU7yr3jabDxJ9mUwVZwCFXJ7qWHcn6EocpAtyfgBXj6qnBRRYM6BoYKN"
       }
     }
   }

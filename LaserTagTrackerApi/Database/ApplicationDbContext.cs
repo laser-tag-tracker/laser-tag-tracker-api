@@ -8,6 +8,10 @@ namespace LaserTagTrackerApi.Database
         public DbSet<Match> Matches { get; set; }
         public DbSet<User> Users { get; set; }
 
+        public ApplicationDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasKey(u => u.Id);
