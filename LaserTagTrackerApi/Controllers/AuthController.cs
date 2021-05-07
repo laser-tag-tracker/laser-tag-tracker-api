@@ -71,6 +71,7 @@ namespace LaserTagTrackerApi.Controllers
 
             return new AuthSuccessDto()
             {
+                UserId = user.Id,
                 Username = user.Username,
                 Token = tokenGenerator.WriteToken(token)
             };
