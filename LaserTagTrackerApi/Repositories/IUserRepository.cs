@@ -10,5 +10,6 @@ namespace LaserTagTrackerApi.Repositories
         Task<User> CreateUser(User user);
         Task<User> FindUserByIdWithMatches(Guid id);
         Task<User> UpdateUser(User user);
+        Task<bool> ExistsByUsername(string username);
     }
 }

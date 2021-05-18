@@ -25,10 +25,14 @@ namespace LaserTagTrackerApi.Controllers
             this.userRepository = userRepository;
         }
 
-
         [HttpPost("register")]
         public async Task<ActionResult<RegisteredUserDto>> Register([FromBody] CredentialsDto dto)
         {
+            if (await userRepository.ExistsByUsername(dto.Username))
+            {
+                return BadRequest("User already exists");
+            }
+            
             var user = new User()
             {
                 Username = dto.Username,

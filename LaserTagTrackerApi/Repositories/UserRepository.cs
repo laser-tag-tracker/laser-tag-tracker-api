@@ -46,5 +46,9 @@ namespace LaserTagTrackerApi.Repositories
             await dbContext.SaveChangesAsync();
             return user;
         }
+
+        public Task<bool> ExistsByUsername(string username) => usersDbSet
+            .AnyAsync(user => user.Username == username);
+        
     }
 }
