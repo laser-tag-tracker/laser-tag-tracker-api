@@ -56,7 +56,6 @@ namespace LaserTagTrackerApi.Tests
                 var logger = scopedServices.GetRequiredService<ILogger<LaserTagTrackerApiWebApplicationFactory>>();
 
                 // Ensure the database is created.
-                appDb.Database.EnsureCreated();
                 Context = appDb;
             });
         }
